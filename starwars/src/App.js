@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CharacterProfiles from "./components/CharacterProfile";
+import styled from "styled-components";
 import axios from "axios";
 import "./App.css";
 
@@ -25,27 +26,41 @@ const App = () => {
 			});
 	}, []);
 
+	const CharContent = styled.div`
+    border: 1px solid black;
+    width: 40%;
+		margin: 5%;
+		display: flex;
+		justify-content: space-between;
+	`;
+
 	return (
 		<div className="App">
 			<h1 className="Header">React Wars</h1>
 			{starwarsChars.map((data, i) => {
+				console.log(data.films);
+				console.log(data.species);
+				console.log(data.starships);
+				console.log(data.vehicles);
 				return (
-					<CharacterProfiles
-						key={i}
-						name={data.name}
-						birthYear={data.birth_year}
-						eyeColor={data.eye_color}
-						films={data.films}
-						gender={data.gender}
-						hairColor={data.hair_color}
-						height={data.height}
-						homeworld={data.homeworld}
-						mass={data.mass}
-						skinColor={data.skin_color}
-						species={data.species}
-						starships={data.starships}
-						vehicles={data.vehicles}
-					/>
+					<CharContent>
+						<CharacterProfiles
+							key={i}
+							name={data.name}
+							birthYear={data.birth_year}
+							eyeColor={data.eye_color}
+							films={data.films}
+							gender={data.gender}
+							hairColor={data.hair_color}
+							height={data.height}
+							homeworld={data.homeworld}
+							mass={data.mass}
+							skinColor={data.skin_color}
+							species={data.species}
+							starships={data.starships}
+							vehicles={data.vehicles}
+						/>
+					</CharContent>
 				);
 			})}
 		</div>
